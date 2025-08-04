@@ -5,25 +5,26 @@ import slide1 from "@/assets/onBoarding/slide1.png";
 import slide2 from "@/assets/onBoarding/slide2.png";
 import slide3 from "@/assets/onBoarding/slide3.png";
 
+import i18n from "@/i18n";
+
 const OnBoardingScreen = () => {
   return (
     <MainView>
       <OnBoarding
         slides={[
           {
-            title: "Plan Your Trip",
-            subtitle: "Save places and book your perfect trip with Circle App",
+            title: i18n.t("onboarding.slide1.title"),
+            subtitle: i18n.t("onboarding.slide1.description"),
             image: slide1,
           },
           {
-            title: "Begin The Adventure",
-            subtitle:
-              "Begin The Cirlce App with Alone or your family & friends",
+            title: i18n.t("onboarding.slide2.title"),
+            subtitle: i18n.t("onboarding.slide2.description"),
             image: slide2,
           },
           {
-            title: "Enjoy Your Trip",
-            subtitle: "Enjoy your Circle Travel Package and stay relax",
+            title: i18n.t("onboarding.slide3.title"),
+            subtitle: i18n.t("onboarding.slide3.description"),
             image: slide3,
           },
         ]}

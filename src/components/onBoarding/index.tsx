@@ -1,11 +1,5 @@
 import React, { useRef, useState } from "react";
-import {
-  FlatList,
-  ImageSourcePropType,
-  StyleSheet,
-  TouchableOpacity,
-  View,
-} from "react-native";
+import { FlatList, ImageSourcePropType, StyleSheet, View } from "react-native";
 import Animated, {
   Easing,
   FadeIn,
@@ -22,9 +16,12 @@ import { Image } from "expo-image";
 import Button from "@/components/Button";
 import MainText from "@/components/MainText";
 import ExpandingDots from "@/components/onBoarding/Dots";
+import TouchableOpacity from "@/components/TouchableOpacity";
 
 import { Colors } from "@/utils/Colors";
 import { Metrics } from "@/utils/Metrics";
+
+import i18n from "@/i18n";
 
 type Slide = {
   title: string;
@@ -95,7 +92,7 @@ const OnBoarding = ({ slides }: OnBoardingProps) => {
     return (
       <View style={styles.button}>
         <Button onPress={handleNext}>
-          {isLastSlide ? "Get Started" : "Next"}
+          {isLastSlide ? i18n.t("get_started") : i18n.t("next")}
         </Button>
       </View>
     );
@@ -111,7 +108,7 @@ const OnBoarding = ({ slides }: OnBoardingProps) => {
         >
           <TouchableOpacity onPress={handleSkip}>
             <MainText fontWeight={"600"} color={Colors.primary}>
-              Skip
+              {i18n.t("skip")}
             </MainText>
           </TouchableOpacity>
         </Animated.View>
@@ -161,6 +158,7 @@ const styles = StyleSheet.create({
     position: "absolute",
     top: Metrics.padding.large,
     right: Metrics.padding.large,
+    zIndex: 10,
   },
   expandedDotsContainer: {
     position: "absolute",

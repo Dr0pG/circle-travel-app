@@ -1,0 +1,19 @@
+{
+    "onboarding": {
+        "slide1": {
+            "title": "Plan Your Trip",
+            "description": "Save places and book your perfect trip with Circle App."
+        },
+        "slide2": {
+            "title": "Begin The Adventure",
+            "description": "Begin The Cirlce App with Alone or your family & friends."
+        },
+        "slide3": {
+            "title": "Enjoy Your Trip",
+            "description": "Enjoy your Circle Travel Package and stay relax."
+        },
+    },
+    "skip": "Skip",
+    "get_started": "Get Started",
+    "next": "Next"
+}
