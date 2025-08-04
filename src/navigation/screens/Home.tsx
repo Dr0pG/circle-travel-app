@@ -1,20 +1,21 @@
-import { Text } from "@react-navigation/elements";
+import MainText from "@/components/MainText";
 import { StyleSheet, View } from "react-native";
 
-export function Home() {
+const Home = () => {
   return (
     <View style={styles.container}>
-      <Text>Home Screen</Text>
-      <Text>Open up 'src/App.tsx' to start working on your app!</Text>
+      <MainText>Home Screen</MainText>
+      <MainText>Open up 'src/App.tsx' to start working on your app!</MainText>
     </View>
   );
-}
+};
 
 const styles = StyleSheet.create({
   container: {
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    gap: 10,
   },
 });
+
+export default Home;

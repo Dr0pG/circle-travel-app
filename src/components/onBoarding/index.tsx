@@ -13,6 +13,10 @@ import { runOnJS } from "react-native-worklets";
 
 import { Image } from "expo-image";
 
+import { replace } from "@/navigation/NavigationService";
+
+import { ScreenName } from "@/types/navigation";
+
 import Button from "@/components/Button";
 import MainText from "@/components/MainText";
 import ExpandingDots from "@/components/onBoarding/Dots";
@@ -20,6 +24,8 @@ import TouchableOpacity from "@/components/TouchableOpacity";
 
 import { Colors } from "@/utils/Colors";
 import { Metrics } from "@/utils/Metrics";
+
+import { useAppStore } from "@/store/useAppStore";
 
 import i18n from "@/i18n";
 
@@ -34,6 +40,8 @@ type OnBoardingProps = {
 };
 
 const OnBoarding = ({ slides }: OnBoardingProps) => {
+  const { setOnboardingSeen } = useAppStore();
+
   const scrollX = useSharedValue(0);
   const flatListRef = useRef<FlatList>(null);
 
@@ -62,7 +70,12 @@ const OnBoarding = ({ slides }: OnBoardingProps) => {
   };
 
   const handleNext = () => {
-    if (isLastSlide) return;
+    if (isLastSlide) {
+      setOnboardingSeen(true);
+      replace(ScreenName.HomeTabs);
+      return;
+    }
+
     flatListRef.current?.scrollToIndex({
       index: Math.round(scrollX.value / Metrics.screenWidth) + 1,
       animated: true,

@@ -1,39 +1,74 @@
 import * as React from "react";
-import { StyleSheet, useColorScheme } from "react-native";
+import { StyleSheet } from "react-native";
 import { GestureHandlerRootView } from "react-native-gesture-handler";
 
 import { Assets as NavigationAssets } from "@react-navigation/elements";
-import { DarkTheme, DefaultTheme } from "@react-navigation/native";
 
 import { Asset } from "expo-asset";
+import { Image } from "expo-image";
 import * as SplashScreen from "expo-splash-screen";
 
-import { Navigation } from "@/navigation";
+import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import { NavigationContainer } from "@react-navigation/native";
+import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
-Asset.loadAsync([
-  ...NavigationAssets,
-  require("@/assets/newspaper.png"),
-  require("@/assets/bell.png"),
-  require("@/assets/onBoarding/slide1.png"),
-  require("@/assets/onBoarding/slide2.png"),
-  require("@/assets/onBoarding/slide3.png"),
-]);
+import { navigationRef } from "@/navigation/NavigationService";
+import Home from "@/navigation/screens/Home";
+import OnBoardingScreen from "@/navigation/screens/OnBoarding";
+
+import { useAppStore } from "@/store/useAppStore";
+
+import bell from "@/assets/bell.png";
+import newspaper from "@/assets/newspaper.png";
+import slide1 from "@/assets/onBoarding/slide1.png";
+import slide2 from "@/assets/onBoarding/slide2.png";
+import slide3 from "@/assets/onBoarding/slide3.png";
+
+Asset.loadAsync([...NavigationAssets, newspaper, bell, slide1, slide2, slide3]);
 
 SplashScreen.preventAutoHideAsync();
 
-export function App() {
-  const colorScheme = useColorScheme();
+const Stack = createNativeStackNavigator();
+const Tab = createBottomTabNavigator();
 
-  const theme = colorScheme === "dark" ? DarkTheme : DefaultTheme;
+function HomeTabs() {
+  return (
+    <Tab.Navigator>
+      <Tab.Screen
+        name="Home"
+        component={Home}
+        options={{
+          title: "Home",
+          tabBarIcon: ({ color, size }) => (
+            <Image
+              source={newspaper}
+              tintColor={color}
+              style={{ width: size, height: size }}
+            />
+          ),
+        }}
+      />
+    </Tab.Navigator>
+  );
+}
+
+export function App() {
+  const { isOnboardingSeen } = useAppStore();
 
   return (
     <GestureHandlerRootView style={styles.container}>
-      <Navigation
-        theme={theme}
-        onReady={() => {
-          SplashScreen.hideAsync();
-        }}
-      />
+      <NavigationContainer
+        ref={navigationRef}
+        onReady={() => SplashScreen.hideAsync()}
+      >
+        <Stack.Navigator
+          initialRouteName={isOnboardingSeen ? "HomeTabs" : "OnBoarding"}
+          screenOptions={{ headerShown: false }}
+        >
+          <Stack.Screen name="OnBoarding" component={OnBoardingScreen} />
+          <Stack.Screen name="HomeTabs" component={HomeTabs} />
+        </Stack.Navigator>
+      </NavigationContainer>
     </GestureHandlerRootView>
   );
 }
