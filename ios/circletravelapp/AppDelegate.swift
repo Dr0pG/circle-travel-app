@@ -1,6 +1,7 @@
 import Expo
 import React
 import ReactAppDependencyProvider
+import Firebase
 
 @UIApplicationMain
 public class AppDelegate: ExpoAppDelegate {
@@ -16,6 +17,8 @@ public class AppDelegate: ExpoAppDelegate {
     let delegate = ReactNativeDelegate()
     let factory = ExpoReactNativeFactory(delegate: delegate)
     delegate.dependencyProvider = RCTAppDependencyProvider()
+
+    FirebaseApp.configure()
 
     reactNativeDelegate = delegate
     reactNativeFactory = factory

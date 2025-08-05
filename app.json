@@ -1,6 +1,6 @@
 {
   "expo": {
-    "name": "circle-travel-app",
+    "name": "Circle Travel",
     "slug": "circle-travel-app",
     "version": "1.0.0",
     "orientation": "portrait",
@@ -9,15 +9,26 @@
     "newArchEnabled": true,
     "scheme": "circletravelapp",
     "ios": {
-      "supportsTablet": true,
-      "bundleIdentifier": "com.satya164.reactnavigationtemplate"
+      "googleServicesFile": "./ios/GoogleService-Info.plist",
+      "supportsTablet": false,
+      "bundleIdentifier": "com.circletravel.app",
+      "entitlements": {
+        "aps-environment": "production"
+      },
+      "infoPlist": {
+        "UIBackgroundModes": [
+          "remote-notification",
+          "fetch"
+        ]
+      }
     },
     "android": {
+      "googleServicesFile": "./android/app/google-services.json",
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.satya164.reactnavigationtemplate"
+      "package": "com.circletravel.app"
     },
     "web": {
       "favicon": "./assets/favicon.png"
@@ -31,7 +42,9 @@
           "image": "./assets/splash-icon.png"
         }
       ],
-      "react-native-edge-to-edge"
+      "react-native-edge-to-edge",
+      "@react-native-firebase/app",
+      "@react-native-firebase/auth"
     ]
   }
 }
