@@ -84,20 +84,28 @@ const OnBoarding = ({ slides }: OnBoardingProps) => {
 
   const renderItem = ({ item }: { item: Slide }) => (
     <View style={[styles.slide, { width: Metrics.screenWidth }]}>
-      {!!item.image && (
-        <Image source={item.image} style={styles.image} contentFit="contain" />
-      )}
-      <MainText
-        fontSize={Metrics.fontSize.large}
-        fontWeight={"bold"}
-        textAlign="center"
-        style={styles.title}
-      >
-        {item.title}
-      </MainText>
-      <MainText textAlign="center" style={styles.subtitle}>
-        {item.subtitle}
-      </MainText>
+      <View style={styles.topSection}>
+        {!!item.image && (
+          <Image
+            source={item.image}
+            style={styles.image}
+            contentFit="contain"
+          />
+        )}
+      </View>
+      <View style={styles.bottomSection}>
+        <MainText
+          fontSize={Metrics.fontSize.large}
+          fontWeight={"bold"}
+          textAlign="center"
+          style={styles.title}
+        >
+          {item.title}
+        </MainText>
+        <MainText textAlign="center" style={styles.subtitle}>
+          {item.subtitle}
+        </MainText>
+      </View>
     </View>
   );
 
@@ -152,13 +160,29 @@ const styles = StyleSheet.create({
     flex: 1,
   },
   slide: {
-    justifyContent: "center",
+    width: Metrics.screenWidth,
+    height: Metrics.screenHeight,
     alignItems: "center",
-    padding: Metrics.padding.large * 2,
+    justifyContent: "space-between",
+    paddingHorizontal: Metrics.padding.large * 2,
+    paddingTop: Metrics.padding.large,
+  },
+  topSection: {
+    height: Metrics.screenHeight * 0.45,
+    width: "100%",
+    justifyContent: "flex-end",
+    alignItems: "center",
+  },
+  bottomSection: {
+    height: Metrics.screenHeight * 0.4,
+    width: "100%",
+    alignItems: "center",
+    justifyContent: "flex-start",
+    paddingTop: Metrics.padding.medium,
   },
   image: {
-    width: "70%",
-    height: "50%",
+    width: "80%",
+    height: "100%",
     marginBottom: Metrics.padding.small,
   },
   title: {
@@ -175,12 +199,15 @@ const styles = StyleSheet.create({
   },
   expandedDotsContainer: {
     position: "absolute",
-    bottom: Metrics.screenHeight * 0.35,
+    top: Metrics.screenHeight * 0.51,
+    left: 0,
+    right: 0,
     alignItems: "center",
     justifyContent: "center",
   },
   button: {
     paddingHorizontal: Metrics.padding.large,
+    paddingVertical: Metrics.padding.small,
   },
 });
 

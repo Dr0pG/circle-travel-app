@@ -1,8 +1,9 @@
 import React from "react";
 import { StyleSheet } from "react-native";
 
-import { Colors } from "@/utils/Colors";
 import { SafeAreaView } from "react-native-safe-area-context";
+
+import { Colors } from "@/utils/Colors";
 
 type PropTypes = {
   children: React.ReactNode;
