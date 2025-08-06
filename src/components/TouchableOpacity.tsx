@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import {
   TouchableOpacity as RNTouchableOpacity,
   StyleProp,
@@ -58,4 +58,4 @@ const TouchableOpacity = ({
   );
 };
 
-export default TouchableOpacity;
+export default memo(TouchableOpacity);

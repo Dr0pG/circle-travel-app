@@ -16,4 +16,10 @@ export const Colors = {
   x: "#000000",
   linkedin: "#0077b5",
   whatsapp: "#25d366",
+
+  error: "#ff0000",
+
+  textInputBackground: "#f5f5f5",
+  textInputBorder: "#dcdcdc",
+  textInputPlaceholder: "#a9a9a9",
 };

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import {
   ActivityIndicator,
   StyleSheet,
@@ -66,7 +66,7 @@ const styles = StyleSheet.create({
   base: {
     paddingVertical: Metrics.padding.medium,
     paddingHorizontal: Metrics.padding.large,
-    borderRadius: Metrics.borderRadius.medium,
+    borderRadius: Metrics.borderRadius.small,
     alignItems: "center",
     justifyContent: "center",
   },
@@ -83,4 +83,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default Button;
+export default memo(Button);

@@ -1,5 +1,6 @@
-import MainText from "@/components/MainText";
 import { StyleSheet, View } from "react-native";
+
+import MainText from "@/components/MainText";
 
 const NotFound = () => {
   return (

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import { StyleSheet, Text, TextProps, TextStyle } from "react-native";
 
 import { Colors } from "@/utils/Colors";
@@ -56,4 +56,4 @@ const styles = StyleSheet.create({
   },
 });
 
-export default MainText;
+export default memo(MainText);

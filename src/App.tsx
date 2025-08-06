@@ -1,6 +1,9 @@
 import * as React from "react";
 import { StyleSheet } from "react-native";
+
 import { GestureHandlerRootView } from "react-native-gesture-handler";
+
+import { KeyboardProvider } from "react-native-keyboard-controller";
 
 import { Assets as NavigationAssets } from "@react-navigation/elements";
 
@@ -14,7 +17,12 @@ import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
 import { navigationRef } from "@/navigation/NavigationService";
 import Home from "@/navigation/screens/Home";
+import NotFound from "@/navigation/screens/NotFound";
 import OnBoardingScreen from "@/navigation/screens/OnBoarding";
+import SignIn from "@/navigation/screens/SignIn";
+import SignUp from "@/navigation/screens/SignUp";
+
+import { ScreenName } from "@/types/navigation";
 
 import { useAppStore } from "@/store/useAppStore";
 
@@ -56,20 +64,27 @@ export function App() {
   const { isOnboardingSeen } = useAppStore();
 
   return (
-    <GestureHandlerRootView style={styles.container}>
-      <NavigationContainer
-        ref={navigationRef}
-        onReady={() => SplashScreen.hideAsync()}
-      >
-        <Stack.Navigator
-          initialRouteName={isOnboardingSeen ? "HomeTabs" : "OnBoarding"}
-          screenOptions={{ headerShown: false }}
+    <KeyboardProvider>
+      <GestureHandlerRootView style={styles.container}>
+        <NavigationContainer
+          ref={navigationRef}
+          onReady={() => SplashScreen.hideAsync()}
         >
-          <Stack.Screen name="OnBoarding" component={OnBoardingScreen} />
-          <Stack.Screen name="HomeTabs" component={HomeTabs} />
-        </Stack.Navigator>
-      </NavigationContainer>
-    </GestureHandlerRootView>
+          <Stack.Navigator
+            initialRouteName={
+              isOnboardingSeen ? ScreenName.SignIn : ScreenName.OnBoarding
+            }
+            screenOptions={{ headerShown: false }}
+          >
+            <Stack.Screen name="OnBoarding" component={OnBoardingScreen} />
+            <Stack.Screen name="SignIn" component={SignIn} />
+            <Stack.Screen name="SignUp" component={SignUp} />
+            <Stack.Screen name="HomeTabs" component={HomeTabs} />
+            <Stack.Screen name="NotFound" component={NotFound} />
+          </Stack.Navigator>
+        </NavigationContainer>
+      </GestureHandlerRootView>
+    </KeyboardProvider>
   );
 }
 

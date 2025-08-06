@@ -72,7 +72,7 @@ const OnBoarding = ({ slides }: OnBoardingProps) => {
   const handleNext = () => {
     if (isLastSlide) {
       setOnboardingSeen(true);
-      replace(ScreenName.HomeTabs);
+      replace(ScreenName.SignIn);
       return;
     }
 
