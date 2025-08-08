@@ -1,21 +1,21 @@
-import { StyleSheet, View } from "react-native";
+import { StyleSheet } from "react-native";
 
 import Authentication from "@/api/Authentication";
 
 import MainText from "@/components/MainText";
+import MainView from "@/components/MainView";
 import TouchableOpacity from "@/components/TouchableOpacity";
 
 const Home = () => {
   const onLogOut = async () => await Authentication.signOut();
 
   return (
-    <View style={styles.container}>
+    <MainView style={styles.container}>
       <MainText>Home Screen</MainText>
-      <MainText>Open up 'src/App.tsx' to start working on your app!</MainText>
       <TouchableOpacity onPress={onLogOut}>
         <MainText>Log out</MainText>
       </TouchableOpacity>
-    </View>
+    </MainView>
   );
 };
 

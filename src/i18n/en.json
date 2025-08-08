@@ -73,6 +73,12 @@
         "email_was_sent_with_a_link": "An email was sent with a link to reset the password.",
         "go_back": "Go Back"
     },
+    "tabs": {
+        "home": "Home",
+        "favorite": "Favorite",
+        "inbox": "Inbox",
+        "more": "More",
+    },
     "user_logout_successfully": "User logout successfully!",
     "something_went_wrong": "Something went wrong. Try again later!",
     "skip": "Skip",

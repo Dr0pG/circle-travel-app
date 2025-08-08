@@ -19,10 +19,17 @@ import {
 
 import { Asset } from "expo-asset";
 import { useFonts } from "expo-font";
-import { Image } from "expo-image";
 import * as SplashScreen from "expo-splash-screen";
 
-import { createBottomTabNavigator } from "@react-navigation/bottom-tabs";
+import Entypo from "@expo/vector-icons/Entypo";
+import Fontisto from "@expo/vector-icons/Fontisto";
+import Ionicons from "@expo/vector-icons/Ionicons";
+import MaterialIcons from "@expo/vector-icons/MaterialIcons";
+
+import {
+  BottomTabBarProps,
+  createBottomTabNavigator,
+} from "@react-navigation/bottom-tabs";
 import { NavigationContainer } from "@react-navigation/native";
 import { createNativeStackNavigator } from "@react-navigation/native-stack";
 
@@ -31,12 +38,16 @@ import LottieView from "lottie-react-native";
 
 import { navigationRef, replace } from "@/navigation/NavigationService";
 import ForgotPassword from "@/navigation/screens/ForgotPassword";
-import Home from "@/navigation/screens/Home";
 import NotFound from "@/navigation/screens/NotFound";
 import OnBoardingScreen from "@/navigation/screens/OnBoarding";
 import SignIn from "@/navigation/screens/SignIn";
 import SignUp from "@/navigation/screens/SignUp";
+import Favorite from "@/navigation/screens/Tabs/Favorite";
+import Home from "@/navigation/screens/Tabs/Home";
+import Inbox from "@/navigation/screens/Tabs/Inbox";
+import More from "@/navigation/screens/Tabs/More";
 
+import CustomTabBar from "@/components/CustomTabBar";
 import MainView from "@/components/MainView";
 
 import { ScreenName } from "@/types/navigation";
@@ -76,18 +87,45 @@ const Tab = createBottomTabNavigator();
 
 function HomeTabs() {
   return (
-    <Tab.Navigator screenOptions={{ headerShown: false }}>
+    <Tab.Navigator
+      tabBar={(props: BottomTabBarProps) => <CustomTabBar {...props} />}
+      screenOptions={{
+        headerShown: false,
+      }}
+    >
       <Tab.Screen
         name="Home"
         component={Home}
         options={{
-          title: "Home",
           tabBarIcon: ({ color, size }) => (
-            <Image
-              source={newspaper}
-              tintColor={color}
-              style={{ width: size, height: size }}
-            />
+            <Entypo name="home" size={size} color={color} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Favorite"
+        component={Favorite}
+        options={{
+          tabBarIcon: ({ color, size }) => (
+            <Fontisto name="favorite" size={size} color={color} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="Inbox"
+        component={Inbox}
+        options={{
+          tabBarIcon: ({ color, size }) => (
+            <MaterialIcons name="email" size={size} color={color} />
+          ),
+        }}
+      />
+      <Tab.Screen
+        name="More"
+        component={More}
+        options={{
+          tabBarIcon: ({ color, size }) => (
+            <Ionicons name="settings" size={size} color={color} />
           ),
         }}
       />

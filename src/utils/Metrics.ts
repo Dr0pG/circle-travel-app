@@ -38,6 +38,8 @@ export const Metrics = {
   imageHeight: 200, // Default height for images
   inputHeight: 50, // Default height for input fields
   backButton: 28,
+  tabBarHeight: 70,
+  tabBarIconSize: 22,
   hitSlop: { top: 15, bottom: 15, left: 15, right: 15 }, // Default hit slop for touchable elements
   screenWidth: Dimensions.get("window").width, // Width of the device screen
   screenHeight: Dimensions.get("window").height, // Height of the device screen
