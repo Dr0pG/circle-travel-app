@@ -56,10 +56,15 @@
         }
     },
     "api": {
-        "account_created_successfully": "Account created successfully",
+        "login_successfully": "Login successfully!",
+        "account_created_successfully": "Account created successfully!",
         "account_already_exists": "An account with this email already exists",
-        "that_email_address_is_invalid": "That email address is invalid"
+        "that_email_address_is_invalid": "That email address is invalid",
+        "that_email_address_is_already_in_use": "That email address is already in use!",
+        "the_supplied_authentication_credential_is_malformed_or_has_expired": "The supplied authentication credential is malformed or has expired"
     },
+    "user_logout_successfully": "User logout successfully!",
+    "something_went_wrong": "Something went wrong. Try again later!",
     "skip": "Skip",
     "get_started": "Get Started",
     "next": "Next"

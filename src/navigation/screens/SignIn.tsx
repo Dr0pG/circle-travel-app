@@ -5,6 +5,8 @@ import { Image } from "expo-image";
 
 import { navigate } from "@/navigation/NavigationService";
 
+import Authentication from "@/api/Authentication";
+
 import AnimatedView from "@/components/AnimatedView";
 import Button from "@/components/Button";
 import KeyboardAware from "@/components/KeyboardAware";
@@ -15,6 +17,7 @@ import TouchableOpacity from "@/components/TouchableOpacity";
 
 import { Colors } from "@/utils/Colors";
 import { Metrics } from "@/utils/Metrics";
+import Validations, { SignInForm } from "@/utils/Validations";
 
 import { ScreenName } from "@/types/navigation";
 
@@ -28,19 +31,38 @@ const SignIn = () => {
   const emailInputRef = useRef<TextInput>(null);
   const passwordInputRef = useRef<TextInput>(null);
 
+  const [isLoading, setIsLoading] = useState(false);
+
   const [email, setEmail] = useState<string>("");
   const [password, setPassword] = useState<string>("");
 
-  const [generalError, setGeneralError] = useState<string | null>();
-  const [error, serError] = useState({
+  const [error, serError] = useState<SignInForm>({
     email: "",
     password: "",
   });
+
+  const [generalError, setGeneralError] = useState<string | null>();
+
+  const isFormFilled = !!email.trim() && !!password.trim();
 
   const onSubmit = async () => {
     Keyboard.dismiss();
 
     setGeneralError(null);
+
+    const validate = Validations.validateSignIn({ email, password });
+
+    if (!validate.success) return serError(validate.errors ?? error);
+
+    try {
+      setIsLoading(true);
+      await Authentication.loginUser(email, password);
+      setGeneralError(null);
+    } catch (error: any) {
+      setGeneralError(error);
+    } finally {
+      setIsLoading(false);
+    }
   };
 
   const onForgotPassword = () => {
@@ -63,6 +85,13 @@ const SignIn = () => {
   const renderForm = () => {
     return (
       <>
+        {!!generalError && (
+          <AnimatedView duration={100}>
+            <MainText color={Colors.error} style={styles.generalError}>
+              {generalError}
+            </MainText>
+          </AnimatedView>
+        )}
         <Input
           ref={emailInputRef}
           placeholder={`${i18n.t("sign_in.your_email")}`}
@@ -89,20 +118,31 @@ const SignIn = () => {
           hasError={error.password !== ""}
           errorMessage={error.password}
           onFocus={() => serError({ ...error, password: "" })}
-          onSubmitEditing={onSubmit}
+          {...(isFormFilled && {
+            onSubmitEditing: onSubmit,
+          })}
         />
       </>
     );
   };
 
   const renderButton = () => {
-    return <Button onPress={onSubmit}>{i18n.t("sign_in.sign_in")}</Button>;
+    return (
+      <Button
+        variant={isFormFilled ? "primary" : "outline"}
+        isLoading={isLoading}
+        disabled={!isFormFilled}
+        onPress={onSubmit}
+      >
+        {i18n.t("sign_in.sign_in")}
+      </Button>
+    );
   };
 
   const renderBottomInfo = () => {
     return (
       <View style={styles.bottomContainer}>
-        <TouchableOpacity onPress={onForgotPassword}>
+        <TouchableOpacity disabled={isLoading} onPress={onForgotPassword}>
           <MainText textAlign="center">
             {i18n.t("sign_in.forgot_password")}
           </MainText>
@@ -111,7 +151,7 @@ const SignIn = () => {
           <MainText textAlign="center">
             {i18n.t("sign_in.dont_have_an_account")}
           </MainText>
-          <TouchableOpacity onPress={onNavigateToSignUp}>
+          <TouchableOpacity disabled={isLoading} onPress={onNavigateToSignUp}>
             <MainText
               textAlign="center"
               fontWeight={"bold"}
@@ -179,6 +219,9 @@ const styles = StyleSheet.create({
     alignItems: "center",
     justifyContent: "center",
     paddingTop: Metrics.padding.large,
+  },
+  generalError: {
+    paddingBottom: Metrics.padding.medium,
   },
 });
 

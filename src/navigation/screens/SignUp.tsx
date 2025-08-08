@@ -52,13 +52,16 @@ const SignUp = () => {
 
   const [generalError, setGeneralError] = useState<string | null>();
 
+  const isFormFilled = Object.values(form).every((value) =>
+    typeof value === "string" ? value.trim() !== "" : false
+  );
+
   const onSubmit = async () => {
     Keyboard.dismiss();
 
     setGeneralError(null);
 
     const validate = Validations.validateSignUp(form);
-    console.log("🚀 ~ onSubmit ~ validate:", validate);
 
     if (!validate.success) return serError(validate.errors ?? error);
 
@@ -90,7 +93,11 @@ const SignUp = () => {
     return (
       <>
         {!!generalError && (
-          <MainText style={styles.generalError}>{generalError}</MainText>
+          <AnimatedView duration={100}>
+            <MainText color={Colors.error} style={styles.generalError}>
+              {generalError}
+            </MainText>
+          </AnimatedView>
         )}
         <Input
           ref={nameInputRef}
@@ -154,7 +161,9 @@ const SignUp = () => {
           hasError={error.confirmPassword !== ""}
           errorMessage={error.confirmPassword}
           onFocus={() => serError({ ...error, confirmPassword: "" })}
-          onSubmitEditing={onSubmit}
+          {...(isFormFilled && {
+            onSubmitEditing: onSubmit,
+          })}
         />
       </>
     );
@@ -162,7 +171,12 @@ const SignUp = () => {
 
   const renderButton = () => {
     return (
-      <Button onPress={onSubmit} isLoading={isLoading}>
+      <Button
+        variant={isFormFilled ? "primary" : "outline"}
+        isLoading={isLoading}
+        disabled={!isFormFilled}
+        onPress={onSubmit}
+      >
         {i18n.t("sign_up.registration")}
       </Button>
     );

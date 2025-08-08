@@ -1,7 +1,9 @@
 import {
   createUserWithEmailAndPassword,
   FirebaseAuthTypes,
+  signOut as FirebasesSignOut,
   getAuth,
+  signInWithEmailAndPassword,
 } from "@react-native-firebase/auth";
 
 import Toast from "@/components/Toast";
@@ -9,6 +11,36 @@ import Toast from "@/components/Toast";
 import Utils from "@/api/Utils";
 
 import i18n from "@/i18n";
+
+/**
+ * Function to login the user
+ * @param email
+ * @param password
+ */
+const loginUser = async (email: string, password: string) => {
+  return signInWithEmailAndPassword(getAuth(), email, password)
+    .then(async () => {
+      Toast.showSuccess(i18n.t("api.login_successfully"));
+    })
+    .catch((error) => {
+      let currentError = null;
+      if (error.code === "auth/email-already-in-use") {
+        currentError = i18n.t("api.that_email_address_is_already_in_use");
+      }
+
+      if (error.code === "auth/invalid-email") {
+        currentError = i18n.t("api.that_email_address_is_invalid");
+      }
+
+      if (error.code === "auth/invalid-credential") {
+        currentError = i18n.t(
+          "api.the_supplied_authentication_credential_is_malformed_or_has_expired"
+        );
+      }
+
+      return Promise.reject(currentError);
+    });
+};
 
 type RegisterUserSignUpForm = {
   name: string;
@@ -73,4 +105,17 @@ const registerUser = async (form: RegisterUserSignUpForm) => {
     });
 };
 
-export default { registerUser };
+/**
+ * Function to log out the user
+ */
+const signOut = () => {
+  FirebasesSignOut(getAuth())
+    .then(async () => {
+      Toast.showSuccess(i18n.t("user_logout_successfully"));
+    })
+    .catch(() => {
+      Toast.showError(i18n.t("something_went_wrong"));
+    });
+};
+
+export default { loginUser, registerUser, signOut };

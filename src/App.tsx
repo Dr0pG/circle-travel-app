@@ -180,7 +180,14 @@ export default function App() {
         <KeyboardProvider>
           <GestureHandlerRootView style={styles.container}>
             <ThemedApp />
-            <Toasts />
+            <Toasts
+              overrideDarkMode
+              defaultStyle={{
+                text: {
+                  color: Colors.text,
+                },
+              }}
+            />
           </GestureHandlerRootView>
         </KeyboardProvider>
       </SafeAreaProvider>
