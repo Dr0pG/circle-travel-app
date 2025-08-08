@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "Circle Travel",
-    "slug": "circle-travel-app",
+    "slug": "circle-travel",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -44,7 +44,14 @@
       ],
       "react-native-edge-to-edge",
       "@react-native-firebase/app",
-      "@react-native-firebase/auth"
-    ]
+      "@react-native-firebase/auth",
+      "expo-font"
+    ],
+    "extra": {
+      "eas": {
+        "projectId": "71087d13-d232-42c0-a54b-a322a3f560ed"
+      }
+    },
+    "owner": "dropg"
   }
 }

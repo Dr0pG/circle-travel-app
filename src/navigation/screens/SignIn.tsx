@@ -1,13 +1,5 @@
 import { useRef, useState } from "react";
-import {
-  Keyboard,
-  StyleSheet,
-  TextInput,
-  TouchableWithoutFeedback,
-  View,
-} from "react-native";
-
-import { KeyboardAwareScrollView } from "react-native-keyboard-controller";
+import { Keyboard, StyleSheet, TextInput, View } from "react-native";
 
 import { Image } from "expo-image";
 
@@ -15,6 +7,7 @@ import { navigate } from "@/navigation/NavigationService";
 
 import AnimatedView from "@/components/AnimatedView";
 import Button from "@/components/Button";
+import KeyboardAware from "@/components/KeyboardAware";
 import MainText from "@/components/MainText";
 import MainView from "@/components/MainView";
 import Input from "@/components/TextInput";
@@ -25,7 +18,7 @@ import { Metrics } from "@/utils/Metrics";
 
 import { ScreenName } from "@/types/navigation";
 
-import slide1 from "@/assets/onBoarding/slide1.png";
+import login from "@/assets/login.png";
 
 import i18n from "@/i18n";
 
@@ -89,6 +82,8 @@ const SignIn = () => {
           placeholder={i18n.t("sign_in.your_password")}
           secureTextEntry
           returnKeyType="send"
+          textContentType="oneTimeCode"
+          autoComplete="password"
           value={password}
           onChangeText={setPassword}
           hasError={error.password !== ""}
@@ -101,11 +96,7 @@ const SignIn = () => {
   };
 
   const renderButton = () => {
-    return (
-      <Button onPress={() => console.log("Sign in")}>
-        {i18n.t("sign_in.sign_in")}
-      </Button>
-    );
+    return <Button onPress={onSubmit}>{i18n.t("sign_in.sign_in")}</Button>;
   };
 
   const renderBottomInfo = () => {
@@ -119,16 +110,16 @@ const SignIn = () => {
         <View style={styles.noAccountContainer}>
           <MainText textAlign="center">
             {i18n.t("sign_in.dont_have_an_account")}
-            <TouchableWithoutFeedback onPress={onNavigateToSignUp}>
-              <MainText
-                textAlign="center"
-                fontWeight={"bold"}
-                color={Colors.primary}
-              >
-                {` ${i18n.t("sign_in.sign_up")}`}
-              </MainText>
-            </TouchableWithoutFeedback>
           </MainText>
+          <TouchableOpacity onPress={onNavigateToSignUp}>
+            <MainText
+              textAlign="center"
+              fontWeight={"bold"}
+              color={Colors.primary}
+            >
+              {` ${i18n.t("sign_in.sign_up")}`}
+            </MainText>
+          </TouchableOpacity>
         </View>
       </View>
     );
@@ -137,17 +128,16 @@ const SignIn = () => {
   return (
     <MainView>
       <AnimatedView style={styles.contentContainer}>
-        <KeyboardAwareScrollView
+        <KeyboardAware
           style={styles.formContainer}
           contentContainerStyle={styles.formContentContainer}
-          keyboardDismissMode="interactive"
         >
-          <Image source={slide1} style={styles.image} contentFit="contain" />
+          <Image source={login} style={styles.image} contentFit="contain" />
           {renderTitle()}
           {renderForm()}
           {renderButton()}
           {renderBottomInfo()}
-        </KeyboardAwareScrollView>
+        </KeyboardAware>
       </AnimatedView>
     </MainView>
   );
@@ -163,7 +153,9 @@ const styles = StyleSheet.create({
     flex: 1,
     justifyContent: "center",
     alignItems: "center",
-    padding: Metrics.padding.large,
+    paddingHorizontal: Metrics.padding.large,
+    paddingBottom: Metrics.padding.large,
+    paddingTop: Metrics.padding.small,
   },
   image: {
     width: "100%",

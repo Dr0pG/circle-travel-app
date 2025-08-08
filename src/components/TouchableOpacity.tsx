@@ -1,3 +1,4 @@
+import { Metrics } from "@/utils/Metrics";
 import React, { memo } from "react";
 import {
   TouchableOpacity as RNTouchableOpacity,
@@ -27,7 +28,12 @@ const TouchableOpacity = ({
 }: PropTypes) => {
   if (!useGestureHandler) {
     return (
-      <RNTouchableOpacity activeOpacity={0.8} style={style} {...rest}>
+      <RNTouchableOpacity
+        activeOpacity={0.8}
+        style={style}
+        hitSlop={Metrics.hitSlop}
+        {...rest}
+      >
         {children}
       </RNTouchableOpacity>
     );
@@ -51,6 +57,7 @@ const TouchableOpacity = ({
     <Pressable
       onPressIn={handlePressIn}
       onPressOut={handlePressOut}
+      hitSlop={Metrics.hitSlop}
       {...(rest as PressableProps)}
     >
       <Animated.View style={[animatedStyle, style]}>{children}</Animated.View>

@@ -23,6 +23,9 @@ import AnimatedView from "@/components/AnimatedView";
 
 import { Colors } from "@/utils/Colors";
 import { Metrics } from "@/utils/Metrics";
+import Animated from "react-native-reanimated";
+import MainText from "./MainText";
+import TouchableOpacity from "./TouchableOpacity";
 
 type PropTypes = TextInputProps & {
   icon?: string;
@@ -107,12 +110,20 @@ const Input = forwardRef<RNTextInput, PropTypes>(
       if (icon !== "password" || (errorMessage && showError)) return;
 
       return (
-        <Entypo
-          name={isVisiblePassword ? "eye-with-line" : "eye"}
-          size={Metrics.iconInput}
-          color={Colors.textInputPlaceholder}
-          onPress={onChangeVisiblePassword}
-        />
+        <AnimatedView duration={200}>
+          <TouchableOpacity
+            activeOpacity={1}
+            focusable={false}
+            importantForAccessibility="no"
+            onPress={onChangeVisiblePassword}
+          >
+            <Entypo
+              name={isVisiblePassword ? "eye-with-line" : "eye"}
+              size={Metrics.iconInput}
+              color={Colors.textInputPlaceholder}
+            />
+          </TouchableOpacity>
+        </AnimatedView>
       );
     }, [isVisiblePassword, errorMessage, showError]);
 
@@ -120,16 +131,22 @@ const Input = forwardRef<RNTextInput, PropTypes>(
       if (!errorMessage && !showError) return;
 
       return (
-        <AnimatedView>
-          <Entypo
-            name="circle-with-cross"
-            size={Metrics.iconInput}
-            color={Colors.error}
+        <AnimatedView duration={200}>
+          <TouchableOpacity
+            activeOpacity={1}
+            focusable={false}
+            importantForAccessibility="no"
             onPress={() => {
               setError(false);
               ref?.current?.clear();
             }}
-          />
+          >
+            <Entypo
+              name="circle-with-cross"
+              size={Metrics.iconInput}
+              color={Colors.error}
+            />
+          </TouchableOpacity>
         </AnimatedView>
       );
     }, [errorMessage, showError]);
@@ -138,12 +155,16 @@ const Input = forwardRef<RNTextInput, PropTypes>(
       if (!errorMessage && !showError) return;
 
       return (
-        <AnimatedView style={styles.errorText}>{errorMessage}</AnimatedView>
+        <AnimatedView duration={200} style={styles.errorText}>
+          <MainText fontSize={Metrics.fontSize.medium} color={Colors.error}>
+            {errorMessage}
+          </MainText>
+        </AnimatedView>
       );
     }, [errorMessage, showError]);
 
     return (
-      <View style={styles.inputContainer}>
+      <Animated.View style={styles.inputContainer}>
         <View
           style={[
             styles.inputWrapper,
@@ -159,6 +180,7 @@ const Input = forwardRef<RNTextInput, PropTypes>(
             placeholderTextColor={Colors.textInputPlaceholder}
             keyboardType={keyboardType}
             secureTextEntry={secureTextEntry && !isVisiblePassword}
+            underlineColorAndroid="transparent"
             onFocus={(e: NativeSyntheticEvent<TextInputFocusEventData>) => {
               onFocus?.(e);
               setError(false);
@@ -169,7 +191,7 @@ const Input = forwardRef<RNTextInput, PropTypes>(
           {renderErrorIcon()}
         </View>
         {renderErrorText()}
-      </View>
+      </Animated.View>
     );
   }
 );
@@ -182,7 +204,8 @@ const styles = StyleSheet.create({
     flexDirection: "row",
     alignItems: "center",
     backgroundColor: Colors.textInputBackground,
-    borderWidth: 0,
+    borderColor: "transparent",
+    borderWidth: 1,
     borderRadius: Metrics.borderRadius.small,
     paddingHorizontal: Metrics.padding.medium,
   },

@@ -44,7 +44,7 @@ const initI18n = async () => {
       lng: language,
       fallbackLng,
       interpolation: {
-        escapeValue: false, // react already safes from xss
+        escapeValue: false,
       },
     });
 };
