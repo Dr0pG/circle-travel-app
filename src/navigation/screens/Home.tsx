@@ -6,7 +6,7 @@ import MainText from "@/components/MainText";
 import TouchableOpacity from "@/components/TouchableOpacity";
 
 const Home = () => {
-  const onLogOut = () => Authentication.signOut();
+  const onLogOut = async () => await Authentication.signOut();
 
   return (
     <View style={styles.container}>

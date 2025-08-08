@@ -50,6 +50,12 @@ const signUpSchema = z
     }
   );
 
+const emailSchema = z.object({
+  email: z
+    .email(i18n.t("validations.email.invalid"))
+    .max(100, i18n.t("validations.email.too_long")),
+});
+
 export type SignInForm = z.infer<typeof signInSchema>;
 
 const validateSignIn = (form: SignInForm) => {
@@ -112,7 +118,27 @@ const validateSignUp = (form: SignUpForm) => {
   };
 };
 
+const validateEmail = (email: string) => {
+  const result = emailSchema.safeParse({ email });
+
+  if (!result.success) {
+    const errorMessage =
+      result.error.issues[0]?.message || i18n.t("validations.email.invalid");
+
+    return {
+      success: false,
+      error: errorMessage,
+    };
+  }
+
+  return {
+    success: true,
+    data: result.data,
+  };
+};
+
 export default {
   validateSignIn,
   validateSignUp,
+  validateEmail,
 };

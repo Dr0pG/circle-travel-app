@@ -63,6 +63,16 @@
         "that_email_address_is_already_in_use": "That email address is already in use!",
         "the_supplied_authentication_credential_is_malformed_or_has_expired": "The supplied authentication credential is malformed or has expired"
     },
+    "reset_password": {
+        "title": "Reset password",
+        "description": "Enter the email adress associated with your account.",
+        "your_email": "Your email",
+        "send_email": "Send Email",
+        "email_sent_successfully": "Email was sent successfully!",
+        "check_your_email": "Check your email",
+        "email_was_sent_with_a_link": "An email was sent with a link to reset the password.",
+        "go_back": "Go Back"
+    },
     "user_logout_successfully": "User logout successfully!",
     "something_went_wrong": "Something went wrong. Try again later!",
     "skip": "Skip",

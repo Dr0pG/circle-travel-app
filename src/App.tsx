@@ -30,6 +30,7 @@ import { Toasts } from "@backpackapp-io/react-native-toast";
 import LottieView from "lottie-react-native";
 
 import { navigationRef, replace } from "@/navigation/NavigationService";
+import ForgotPassword from "@/navigation/screens/ForgotPassword";
 import Home from "@/navigation/screens/Home";
 import NotFound from "@/navigation/screens/NotFound";
 import OnBoardingScreen from "@/navigation/screens/OnBoarding";
@@ -44,6 +45,7 @@ import { useAppStore } from "@/store/useAppStore";
 import { userStore } from "@/store/userStore";
 
 import { Colors } from "@/utils/Colors";
+import { Metrics } from "@/utils/Metrics";
 
 import bell from "@/assets/bell.png";
 import login from "@/assets/login.png";
@@ -55,7 +57,6 @@ import slide3 from "@/assets/onBoarding/slide3.png";
 import register from "@/assets/register.png";
 
 import i18n from "@/i18n";
-import { Metrics } from "./utils/Metrics";
 
 Asset.loadAsync([
   ...NavigationAssets,
@@ -75,7 +76,7 @@ const Tab = createBottomTabNavigator();
 
 function HomeTabs() {
   return (
-    <Tab.Navigator>
+    <Tab.Navigator screenOptions={{ headerShown: false }}>
       <Tab.Screen
         name="Home"
         component={Home}
@@ -144,6 +145,7 @@ const ThemedApp = () => {
         <Stack.Screen name="OnBoarding" component={OnBoardingScreen} />
         <Stack.Screen name="SignIn" component={SignIn} />
         <Stack.Screen name="SignUp" component={SignUp} />
+        <Stack.Screen name="ForgotPassword" component={ForgotPassword} />
         <Stack.Screen name="NotFound" component={NotFound} />
         <Stack.Screen name="HomeTabs" component={HomeTabs} />
       </Stack.Navigator>

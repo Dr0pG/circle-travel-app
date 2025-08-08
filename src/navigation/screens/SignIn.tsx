@@ -25,6 +25,7 @@ import login from "@/assets/login.png";
 
 import i18n from "@/i18n";
 
+const onForgotPassword = () => navigate(ScreenName.ForgotPassword);
 const onNavigateToSignUp = () => navigate(ScreenName.SignUp);
 
 const SignIn = () => {
@@ -63,10 +64,6 @@ const SignIn = () => {
     } finally {
       setIsLoading(false);
     }
-  };
-
-  const onForgotPassword = () => {
-    console.log("Forgot password");
   };
 
   const renderTitle = () => {

@@ -3,6 +3,7 @@ import {
   FirebaseAuthTypes,
   signOut as FirebasesSignOut,
   getAuth,
+  sendPasswordResetEmail,
   signInWithEmailAndPassword,
 } from "@react-native-firebase/auth";
 
@@ -106,10 +107,23 @@ const registerUser = async (form: RegisterUserSignUpForm) => {
 };
 
 /**
+ * Function to send email to reset password
+ */
+const resetPassword = async (email: string) => {
+  return sendPasswordResetEmail(getAuth(), email)
+    .then(() => {
+      Toast.showSuccess(i18n.t("reset_password.email_sent_successfully"));
+    })
+    .catch(() => {
+      Toast.showError(i18n.t("something_went_wrong"));
+    });
+};
+
+/**
  * Function to log out the user
  */
-const signOut = () => {
-  FirebasesSignOut(getAuth())
+const signOut = async () => {
+  return FirebasesSignOut(getAuth())
     .then(async () => {
       Toast.showSuccess(i18n.t("user_logout_successfully"));
     })
@@ -118,4 +132,4 @@ const signOut = () => {
     });
 };
 
-export default { loginUser, registerUser, signOut };
+export default { loginUser, registerUser, resetPassword, signOut };

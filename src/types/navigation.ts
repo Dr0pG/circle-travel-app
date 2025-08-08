@@ -4,6 +4,7 @@ export enum ScreenName {
 
   SignIn = "SignIn",
   SignUp = "SignUp",
+  ForgotPassword = "ForgotPassword",
 
   NotFound = "NotFound",
 }
@@ -13,5 +14,6 @@ export type RootStackParamList = {
   [ScreenName.HomeTabs]: undefined;
   [ScreenName.SignIn]: undefined;
   [ScreenName.SignUp]: undefined;
+  [ScreenName.ForgotPassword]: undefined;
   [ScreenName.NotFound]: undefined;
 };
