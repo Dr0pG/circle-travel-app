@@ -66,7 +66,10 @@ const TravelCategory = () => {
         showsHorizontalScrollIndicator={false}
         keyExtractor={(item) => item}
         style={styles.container}
-        contentContainerStyle={{ paddingTop: Metrics.padding.medium }}
+        contentContainerStyle={{
+          paddingTop: Metrics.padding.medium,
+          paddingRight: Metrics.padding.medium,
+        }}
         renderItem={renderItem}
       />
     </View>
