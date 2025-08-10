@@ -50,7 +50,7 @@ const Home = () => {
           </MainText>
           {currentUser && (
             <MainText fontSize={Metrics.fontSize.xLarge} fontWeight={"bold"}>
-              {currentUser.displayName}
+              {`${currentUser.displayName}!`}
             </MainText>
           )}
         </View>
