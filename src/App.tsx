@@ -59,6 +59,14 @@ import { Colors } from "@/utils/Colors";
 import { Metrics } from "@/utils/Metrics";
 
 import bell from "@/assets/bell.png";
+import beach from "@/assets/category/beach.jpg";
+import desert from "@/assets/category/desert.jpg";
+import forest from "@/assets/category/forest.jpg";
+import jungle from "@/assets/category/jungle.jpg";
+import lake from "@/assets/category/lake.jpg";
+import mountain from "@/assets/category/mountain.jpg";
+import river from "@/assets/category/river.jpg";
+import volcano from "@/assets/category/volcano.jpg";
 import login from "@/assets/login.png";
 import bigLoading from "@/assets/lottie/bigLoading.json";
 import newspaper from "@/assets/newspaper.png";
@@ -78,6 +86,14 @@ Asset.loadAsync([
   slide3,
   login,
   register,
+  mountain,
+  beach,
+  desert,
+  forest,
+  lake,
+  river,
+  jungle,
+  volcano,
 ]);
 
 SplashScreen.preventAutoHideAsync();

@@ -5,7 +5,7 @@ import MainView from "@/components/MainView";
 
 const More = () => {
   return (
-    <MainView style={styles.container}>
+    <MainView edges={["top"]}>
       <MainText>More</MainText>
     </MainView>
   );

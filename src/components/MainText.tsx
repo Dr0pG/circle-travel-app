@@ -1,5 +1,11 @@
 import React, { memo } from "react";
-import { StyleSheet, Text, TextProps, TextStyle } from "react-native";
+import {
+  StyleProp,
+  StyleSheet,
+  Text,
+  TextProps,
+  TextStyle,
+} from "react-native";
 
 import { Colors } from "@/utils/Colors";
 import { Metrics } from "@/utils/Metrics";
@@ -9,7 +15,7 @@ type PropTypes = TextProps & {
   fontSize?: number;
   fontWeight?: TextStyle["fontWeight"];
   textAlign?: TextStyle["textAlign"];
-  style?: TextStyle;
+  style?: StyleProp<TextStyle>;
 };
 
 const MainText = ({
@@ -39,6 +45,7 @@ const MainText = ({
       accessible
       accessibilityLabel={children?.toString()}
       accessibilityRole="text"
+      ellipsizeMode="tail"
       {...rest}
     >
       {children}

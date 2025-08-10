@@ -22,4 +22,6 @@ export const Colors = {
   textInputBackground: "#f5f5f5",
   textInputBorder: "#dcdcdc",
   textInputPlaceholder: "#a9a9a9",
+
+  yellow: "#e6c843",
 };

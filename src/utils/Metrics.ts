@@ -1,5 +1,7 @@
 import { Dimensions } from "react-native";
 
+import { Colors } from "@/utils/Colors";
+
 export const Metrics = {
   onboarding: {
     page: {
@@ -14,6 +16,13 @@ export const Metrics = {
     },
     dotSize: 10, // Default size of the dots in the onboarding indicator
     dotExpandedSize: 24, // Size of the expanded dot in the onboarding indicator
+  },
+  shadow: {
+    shadowColor: Colors.black,
+    shadowOpacity: 0.1,
+    shadowRadius: 4,
+    shadowOffset: { width: 0, height: 2 },
+    elevation: 3,
   },
   padding: {
     small: 8, // Small padding
@@ -38,8 +47,16 @@ export const Metrics = {
   imageHeight: 200, // Default height for images
   inputHeight: 50, // Default height for input fields
   backButton: 28,
+  headerIconSize: 28,
   tabBarHeight: 70,
   tabBarIconSize: 22,
+  exclusivePackageImageHeight: 150,
+  ratingIconSize: 18,
+  category: {
+    cardWidth: 120,
+    cardHeight: 130,
+    imageSize: 65,
+  },
   hitSlop: { top: 15, bottom: 15, left: 15, right: 15 }, // Default hit slop for touchable elements
   screenWidth: Dimensions.get("window").width, // Width of the device screen
   screenHeight: Dimensions.get("window").height, // Height of the device screen

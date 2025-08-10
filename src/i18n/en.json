@@ -77,7 +77,34 @@
         "home": "Home",
         "favorite": "Favorite",
         "inbox": "Inbox",
-        "more": "More",
+        "more": "More"
+    },
+    "home": {
+        "good_morning": "Good morning",
+        "good_afternoon": "Good afternoon",
+        "good_evening": "Good evening",
+        "good_night": "Good night",
+        "explore_the_world": "Explore the World",
+        "where_are_you_going": "Where are you going?",
+        "exclusive_package": "Exclusive Package",
+        "explore_category": "Explore Category"
+    },
+    "location": {
+        "europe": "Europe",
+        "south_america": "South America",
+        "africa": "Africa",
+        "south_asian": "South Asian",
+        "east_asia": "East Asia"
+    },
+    "category": {
+        "mountain": "Mountain",
+        "beach": "Beach",
+        "desert": "Desert",
+        "forest": "Forest",
+        "lake": "Lake",
+        "river": "River",
+        "jungle": "Jungle",
+        "volcano": "Volcano"
     },
     "user_logout_successfully": "User logout successfully!",
     "something_went_wrong": "Something went wrong. Try again later!",

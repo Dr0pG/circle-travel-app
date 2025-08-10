@@ -5,7 +5,7 @@ import MainView from "@/components/MainView";
 
 const Inbox = () => {
   return (
-    <MainView style={styles.container}>
+    <MainView edges={["top"]}>
       <MainText>Inbox</MainText>
     </MainView>
   );
