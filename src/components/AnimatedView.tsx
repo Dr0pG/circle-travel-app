@@ -12,18 +12,20 @@ type PropTypes = {
   style?: StyleProp<ViewStyle>;
   children?: React.ReactNode;
   duration?: number;
+  delay?: number;
 } & AnimatedProps<ViewStyle>;
 
 const AnimatedView = ({
   duration = 500,
+  delay = 0,
   children,
   style,
   ...rest
 }: PropTypes) => {
   return (
     <Animated.View
-      entering={FadeInDown.duration(duration).easing(Easing.ease)}
-      exiting={FadeOutDown.duration(duration).easing(Easing.ease)}
+      entering={FadeInDown.duration(duration).delay(delay).easing(Easing.ease)}
+      exiting={FadeOutDown.duration(duration).delay(delay).easing(Easing.ease)}
       layout={LinearTransition}
       style={style}
       {...rest}

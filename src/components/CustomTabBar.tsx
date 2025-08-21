@@ -11,9 +11,10 @@ import { BottomTabBarProps } from "@react-navigation/bottom-tabs";
 import MainText from "@/components/MainText";
 import TouchableOpacity from "@/components/TouchableOpacity";
 
-import i18n from "@/i18n";
 import { Colors } from "@/utils/Colors";
 import { Metrics } from "@/utils/Metrics";
+
+import i18n from "@/i18n";
 
 const CustomTabBar = ({
   state,
@@ -39,15 +40,8 @@ const CustomTabBar = ({
   return (
     <View style={styles.container}>
       <Animated.View
-        style={[
-          styles.indicator,
-          {
-            width: indicatorWidth,
-          },
-          indicatorStyle,
-        ]}
+        style={[styles.indicator, { width: indicatorWidth }, indicatorStyle]}
       />
-
       {state.routes.map((route, index) => {
         const { options } = descriptors[route.key];
         const label =
@@ -59,6 +53,12 @@ const CustomTabBar = ({
 
         const isFocused = state.index === index;
 
+        const scale = useSharedValue(1);
+
+        const animatedStyle = useAnimatedStyle(() => ({
+          transform: [{ scale: scale.value }],
+        }));
+
         const icon = options.tabBarIcon
           ? options.tabBarIcon({
               focused: isFocused,
@@ -68,6 +68,10 @@ const CustomTabBar = ({
           : null;
 
         const onPress = () => {
+          scale.value = withTiming(1.2, { duration: 120 }, () => {
+            scale.value = withTiming(1, { duration: 120 });
+          });
+
           const event = navigation.emit({
             type: "tabPress",
             target: route.key,
@@ -84,14 +88,17 @@ const CustomTabBar = ({
             key={route.key}
             onPress={onPress}
             style={styles.tab}
+            activeOpacity={0.7}
           >
-            {icon}
-            <MainText
-              color={isFocused ? Colors.primary : Colors.secondary}
-              fontSize={Metrics.fontSize.medium}
-            >
-              {i18n.t(`tabs.${label.toString().toLowerCase()}`)}
-            </MainText>
+            <Animated.View style={[animatedStyle, { alignItems: "center" }]}>
+              {icon}
+              <MainText
+                color={isFocused ? Colors.primary : Colors.secondary}
+                fontSize={Metrics.fontSize.medium}
+              >
+                {i18n.t(`tabs.${label.toString().toLowerCase()}`)}
+              </MainText>
+            </Animated.View>
           </TouchableOpacity>
         );
       })}

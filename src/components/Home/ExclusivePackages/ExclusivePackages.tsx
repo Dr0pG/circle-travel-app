@@ -3,6 +3,7 @@ import { FlatList, StyleSheet, View } from "react-native";
 
 import Exclusive, { ExclusivePackageList } from "@/api/Exclusive";
 
+import AnimatedView from "@/components/AnimatedView";
 import Locations from "@/components/Home/ExclusivePackages/Locations";
 import Packages from "@/components/Home/ExclusivePackages/Packages";
 import MainText from "@/components/MainText";
@@ -68,7 +69,7 @@ const ExclusivePackages = () => {
   if (isLoading || !currentExclusivePackages) return;
 
   return (
-    <View>
+    <AnimatedView duration={250} delay={100}>
       <View style={styles.container}>
         <MainText fontSize={Metrics.fontSize.large} fontWeight={"600"}>
           {i18n.t("home.exclusive_package")}
@@ -89,7 +90,7 @@ const ExclusivePackages = () => {
         selectedLocation={selectedLocation}
         setSelectedLocation={setSelectedLocation}
       />
-    </View>
+    </AnimatedView>
   );
 };
 

@@ -1,4 +1,4 @@
-import React, { ForwardedRef, forwardRef, memo, useRef } from "react";
+import React, { forwardRef, memo, RefObject, useRef } from "react";
 import { FlatList, StyleSheet, View } from "react-native";
 
 import { Image } from "expo-image";
@@ -17,7 +17,7 @@ const CARD_WIDTH = Metrics.screenWidth - Metrics.padding.large * 4;
 type PropTypes = {
   data: ExclusivePackage[];
   locations: string[];
-  locationListRef: ForwardedRef<FlatList<string>>;
+  locationListRef: RefObject<FlatList<any>>;
   selectedLocation: string | null;
   setSelectedLocation: (location: string) => void;
 };
@@ -90,7 +90,6 @@ const Packages = forwardRef<FlatList<ExclusivePackage>, PropTypes>(
           offset: (CARD_WIDTH + Metrics.padding.large) * index,
           index,
         })}
-        decelerationRate="fast"
       />
     );
   }

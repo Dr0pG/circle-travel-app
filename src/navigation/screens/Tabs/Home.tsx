@@ -11,6 +11,7 @@ import { ScreenName } from "@/types/navigation";
 
 import AnimatedView from "@/components/AnimatedView";
 import ExclusivePackages from "@/components/Home/ExclusivePackages/ExclusivePackages";
+import RecommendPackages from "@/components/Home/RecommendedPackages/RecommendPackages";
 import TravelCategory from "@/components/Home/TravelCategory";
 import KeyboardAware from "@/components/KeyboardAware";
 import MainText from "@/components/MainText";
@@ -45,7 +46,7 @@ const Home = () => {
           </TouchableOpacity>
         </View>
         <View style={styles.introContent}>
-          <MainText fontSize={Metrics.fontSize.large} color={Colors.secondary}>
+          <MainText fontSize={Metrics.fontSize.large} fontWeight={"200"}>
             {`${currentGreeting},`}
           </MainText>
           {currentUser && (
@@ -84,6 +85,7 @@ const Home = () => {
         <View style={styles.travelCategoryContainer}>
           <TravelCategory />
         </View>
+        <RecommendPackages />
       </KeyboardAware>
     </MainView>
   );
@@ -112,7 +114,8 @@ const styles = StyleSheet.create({
     marginTop: Metrics.padding.small,
   },
   travelCategoryContainer: {
-    paddingVertical: Metrics.padding.medium,
+    paddingTop: Metrics.padding.medium,
+    paddingBottom: Metrics.padding.large,
   },
 });
 

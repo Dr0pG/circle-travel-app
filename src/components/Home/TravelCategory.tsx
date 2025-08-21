@@ -5,13 +5,13 @@ import { Image } from "expo-image";
 
 import Category from "@/api/Category";
 
+import AnimatedView from "@/components/AnimatedView";
 import MainText from "@/components/MainText";
 import TouchableOpacity from "@/components/TouchableOpacity";
 
-import { Metrics } from "@/utils/Metrics";
-
 import { Colors } from "@/utils/Colors";
 import { getCategorySource, TravelCategoryType } from "@/utils/Helper";
+import { Metrics } from "@/utils/Metrics";
 
 import i18n from "@/i18n";
 
@@ -54,7 +54,7 @@ const TravelCategory = () => {
   };
 
   return (
-    <View>
+    <AnimatedView duration={250} delay={200}>
       <View style={styles.container}>
         <MainText fontSize={Metrics.fontSize.large} fontWeight={"600"}>
           {i18n.t("home.explore_category")}
@@ -72,7 +72,7 @@ const TravelCategory = () => {
         }}
         renderItem={renderItem}
       />
-    </View>
+    </AnimatedView>
   );
 };
 

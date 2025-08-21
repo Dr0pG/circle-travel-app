@@ -87,7 +87,10 @@
         "explore_the_world": "Explore the World",
         "where_are_you_going": "Where are you going?",
         "exclusive_package": "Exclusive Package",
-        "explore_category": "Explore Category"
+        "explore_category": "Explore Category",
+        "recommended_packages": "Recommended Packages",
+        "know_your_world": "Know your world",
+        "app_special": "App special",
     },
     "location": {
         "europe": "Europe",
@@ -105,6 +108,10 @@
         "river": "River",
         "jungle": "Jungle",
         "volcano": "Volcano"
+    },
+    "recommended": {
+        "solo_trips": "Solo Trips",
+        "family_trips": "Family Trips"
     },
     "user_logout_successfully": "User logout successfully!",
     "something_went_wrong": "Something went wrong. Try again later!",
