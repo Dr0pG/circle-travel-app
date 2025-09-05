@@ -34,7 +34,13 @@ const Recommendations = ({ data }: PropTypes) => {
           />
         </View>
         <View>
-          <MainText color={Colors.white}>{item.name}</MainText>
+          <MainText
+            fontSize={Metrics.fontSize.medium}
+            fontWeight={"600"}
+            color={Colors.white}
+          >
+            {item.name}
+          </MainText>
           <Stars rating={item.rating} />
         </View>
       </ImageBackground>

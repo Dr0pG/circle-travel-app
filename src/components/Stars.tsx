@@ -4,6 +4,7 @@ import { StyleSheet, View } from "react-native";
 import Ionicons from "@expo/vector-icons/Ionicons";
 
 import { Colors } from "@/utils/Colors";
+import { Metrics } from "@/utils/Metrics";
 
 type PropTypes = {
   rating: number;
@@ -14,7 +15,7 @@ type PropTypes = {
 const Stars = ({
   rating,
   max = 5,
-  size = 14,
+  size = 10,
   color = Colors.white,
 }: PropTypes) => {
   return (
@@ -23,7 +24,12 @@ const Stars = ({
         const filled = Math.min(Math.max(rating - i, 0), 1);
         return (
           <View key={i} style={styles.starContainer}>
-            <Ionicons name="star-outline" size={size} color={color} />
+            <Ionicons
+              name="star-outline"
+              size={size}
+              color={color}
+              style={styles.icon}
+            />
             {filled > 0 && (
               <View
                 style={{
@@ -46,6 +52,7 @@ const Stars = ({
 const styles = StyleSheet.create({
   container: { flexDirection: "row" },
   starContainer: { position: "relative" },
+  icon: { marginRight: Metrics.padding.small / 2 },
 });
 
 export default memo(Stars);

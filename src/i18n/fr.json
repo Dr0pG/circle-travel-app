@@ -55,6 +55,66 @@
             "do_not_match": "Passwords do not match"
         }
     },
+    "api": {
+        "login_successfully": "Login successfully!",
+        "account_created_successfully": "Account created successfully!",
+        "account_already_exists": "An account with this email already exists",
+        "that_email_address_is_invalid": "That email address is invalid",
+        "that_email_address_is_already_in_use": "That email address is already in use!",
+        "the_supplied_authentication_credential_is_malformed_or_has_expired": "The supplied authentication credential is malformed or has expired"
+    },
+    "reset_password": {
+        "title": "Reset password",
+        "description": "Enter the email adress associated with your account.",
+        "your_email": "Your email",
+        "send_email": "Send Email",
+        "email_sent_successfully": "Email was sent successfully!",
+        "check_your_email": "Check your email",
+        "email_was_sent_with_a_link": "An email was sent with a link to reset the password.",
+        "go_back": "Go Back"
+    },
+    "tabs": {
+        "home": "Home",
+        "favorite": "Favorite",
+        "inbox": "Inbox",
+        "more": "More"
+    },
+    "home": {
+        "good_morning": "Good morning",
+        "good_afternoon": "Good afternoon",
+        "good_evening": "Good evening",
+        "good_night": "Good night",
+        "explore_the_world": "Explore the World",
+        "where_are_you_going": "Where are you going?",
+        "exclusive_package": "Exclusive Package",
+        "explore_category": "Explore Category",
+        "recommended_packages": "Recommended Packages",
+        "know_your_world": "Know your world",
+        "app_special": "App special",
+    },
+    "location": {
+        "europe": "Europe",
+        "south_america": "South America",
+        "africa": "Africa",
+        "south_asian": "South Asian",
+        "east_asia": "East Asia"
+    },
+    "category": {
+        "mountain": "Mountain",
+        "beach": "Beach",
+        "desert": "Desert",
+        "forest": "Forest",
+        "lake": "Lake",
+        "river": "River",
+        "jungle": "Jungle",
+        "volcano": "Volcano"
+    },
+    "recommended": {
+        "solo_trips": "Solo Trips",
+        "family_trips": "Family Trips"
+    },
+    "user_logout_successfully": "User logout successfully!",
+    "something_went_wrong": "Something went wrong. Try again later!",
     "skip": "Skip",
     "get_started": "Get Started",
     "next": "Next"

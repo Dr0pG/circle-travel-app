@@ -61,7 +61,7 @@ export const Metrics = {
   recommended: {
     cardWidth: 190, // Width of the recommended package card
     cardHeight: 200, // Height of the recommended package card
-    locationIconSize: 22, // Size of the location icon in recommended packages
+    locationIconSize: 20, // Size of the location icon in recommended packages
   },
   hitSlop: { top: 15, bottom: 15, left: 15, right: 15 }, // Default hit slop for touchable elements
   screenWidth: Dimensions.get("window").width, // Width of the device screen
