@@ -90,6 +90,9 @@ const Packages = forwardRef<FlatList<ExclusivePackage>, PropTypes>(
           offset: (CARD_WIDTH + Metrics.padding.large) * index,
           index,
         })}
+        ItemSeparatorComponent={() => (
+          <View style={{ width: Metrics.padding.large }} />
+        )}
       />
     );
   }
@@ -98,7 +101,6 @@ const Packages = forwardRef<FlatList<ExclusivePackage>, PropTypes>(
 const styles = StyleSheet.create({
   card: {
     width: CARD_WIDTH,
-    marginRight: Metrics.padding.large,
     borderRadius: Metrics.borderRadius.large,
     backgroundColor: Colors.white,
     marginBottom: Metrics.padding.medium,

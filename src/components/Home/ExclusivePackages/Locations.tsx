@@ -1,5 +1,5 @@
 import React, { forwardRef, memo } from "react";
-import { FlatList, StyleSheet } from "react-native";
+import { FlatList, StyleSheet, View } from "react-native";
 
 import MainText from "@/components/MainText";
 import TouchableOpacity from "@/components/TouchableOpacity";
@@ -40,6 +40,9 @@ const Locations = forwardRef<FlatList<string>, PropTypes>(
         style={styles.container}
         contentContainerStyle={{ paddingHorizontal: Metrics.padding.medium }}
         renderItem={renderItem}
+        ItemSeparatorComponent={() => (
+          <View style={{ width: Metrics.padding.small }} />
+        )}
       />
     );
   }
@@ -53,7 +56,6 @@ const styles = StyleSheet.create({
   tab: {
     paddingVertical: Metrics.padding.small / 2,
     paddingHorizontal: Metrics.padding.medium,
-    marginRight: Metrics.padding.small,
     borderRadius: Metrics.borderRadius.large,
     backgroundColor: "transparent",
   },

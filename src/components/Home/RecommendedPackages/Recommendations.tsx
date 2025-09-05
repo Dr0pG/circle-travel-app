@@ -47,11 +47,11 @@ const Recommendations = ({ data }: PropTypes) => {
       horizontal
       showsHorizontalScrollIndicator={false}
       keyExtractor={(item) => item.name}
-      style={styles.container}
-      contentContainerStyle={{
-        paddingRight: Metrics.padding.medium,
-      }}
+      contentContainerStyle={styles.container}
       renderItem={renderItem}
+      ItemSeparatorComponent={() => (
+        <View style={{ width: Metrics.padding.medium }} />
+      )}
     />
   );
 };
@@ -65,7 +65,6 @@ const styles = StyleSheet.create({
     height: Metrics.recommended.cardHeight,
     flexDirection: "row",
     alignItems: "flex-end",
-    marginRight: Metrics.padding.medium,
     padding: Metrics.padding.medium,
   },
   locationContainer: {

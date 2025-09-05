@@ -65,12 +65,16 @@ const TravelCategory = () => {
         horizontal
         showsHorizontalScrollIndicator={false}
         keyExtractor={(item) => item}
-        style={styles.container}
-        contentContainerStyle={{
-          paddingTop: Metrics.padding.medium,
-          paddingRight: Metrics.padding.medium,
-        }}
+        contentContainerStyle={[
+          styles.container,
+          {
+            paddingTop: Metrics.padding.medium,
+          },
+        ]}
         renderItem={renderItem}
+        ItemSeparatorComponent={() => (
+          <View style={{ width: Metrics.padding.medium }} />
+        )}
       />
     </AnimatedView>
   );
@@ -86,7 +90,6 @@ const styles = StyleSheet.create({
     borderWidth: 1,
     borderColor: Colors.secondary,
     padding: Metrics.padding.medium,
-    marginRight: Metrics.padding.medium,
     borderRadius: Metrics.borderRadius.large * 2,
     justifyContent: "space-between",
     alignItems: "center",
