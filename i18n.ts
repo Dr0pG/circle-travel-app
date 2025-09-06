@@ -14,6 +14,8 @@ const resources = {
 
 const fallbackLng = "en"; // Default language
 
+export const currentLanguage = i18n.language || fallbackLng;
+
 export const changeLanguage = async (language: string) => {
   try {
     await i18n.changeLanguage(language);

@@ -1,25 +1,30 @@
 import React, { memo, useEffect, useState } from "react";
 import { StyleSheet, View } from "react-native";
 
+import KnowWorld, { KnowYourWorldItem } from "@/api/KnowWorld";
+
 import AnimatedView from "@/components/AnimatedView";
+import KnowYourWorldPlaces from "@/components/Home/KnowYourWorld/KnowYourWorldPlaces";
 import MainText from "@/components/MainText";
 
+import { Colors } from "@/utils/Colors";
 import { Metrics } from "@/utils/Metrics";
 
 import i18n from "@/i18n";
-import { Colors } from "@/utils/Colors";
 
 const KnowYourWorld = () => {
   const [isLoading, setIsLoading] = useState(false);
 
-  const [knowledgePlaces, setKnowledgePlaces] = useState(null);
+  const [knowledgePlaces, setKnowledgePlaces] = useState<
+    KnowYourWorldItem[] | null
+  >([]);
 
   useEffect(() => {
     const getKnowledgePlaces = async () => {
       setIsLoading(true);
       try {
-        // const recommendedPackages = await Recommended.getRecommendedPackages();
-        // setCurrentRecommendedPackages(recommendedPackages);
+        const currentKnowledgePlaces = await KnowWorld.getKnowYourWorld();
+        setKnowledgePlaces(currentKnowledgePlaces);
       } catch (error: any) {
         console.log("Getting Knowledge Places error: ", error.message);
       } finally {
@@ -31,7 +36,7 @@ const KnowYourWorld = () => {
   }, []);
 
   if (isLoading) return;
-  //   if (!knowledgePlaces) return;
+  if (!knowledgePlaces?.length) return;
 
   return (
     <AnimatedView style={styles.container} duration={250} delay={400}>
@@ -43,6 +48,10 @@ const KnowYourWorld = () => {
           {i18n.t("know_your_world.description")}
         </MainText>
       </View>
+      <KnowYourWorldPlaces
+        data={knowledgePlaces}
+        containerStyle={styles.contentContainer}
+      />
     </AnimatedView>
   );
 };

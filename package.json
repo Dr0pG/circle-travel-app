@@ -26,6 +26,7 @@
     "expo": "^53.0.20",
     "expo-asset": "~11.1.7",
     "expo-dev-client": "~5.2.4",
+    "expo-font": "~13.3.2",
     "expo-image": "~2.4.0",
     "expo-splash-screen": "~0.30.10",
     "expo-system-ui": "~5.0.10",
@@ -43,12 +44,13 @@
     "react-native-safe-area-context": "5.6.1",
     "react-native-screens": "~4.16.0",
     "react-native-svg": "15.12.1",
+    "react-native-translator": "^2.0.0",
     "react-native-web": "^0.21.1",
+    "react-native-webview": "^13.16.0",
     "react-native-worklets": "^0.5.0",
     "tinycolor2": "^1.6.0",
     "zod": "^4.1.5",
-    "zustand": "^5.0.8",
-    "expo-font": "~13.3.2"
+    "zustand": "^5.0.8"
   },
   "devDependencies": {
     "@babel/core": "^7.28.4",

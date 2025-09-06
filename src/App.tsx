@@ -17,6 +17,8 @@ import {
   onAuthStateChanged,
 } from "@react-native-firebase/auth";
 
+import { TranslatorProvider } from "react-native-translator";
+
 import { Asset } from "expo-asset";
 import { useFonts } from "expo-font";
 import * as SplashScreen from "expo-splash-screen";
@@ -231,23 +233,25 @@ export default function App() {
   }
 
   return (
-    <I18nextProvider i18n={i18n}>
-      <SafeAreaProvider>
-        <KeyboardProvider>
-          <GestureHandlerRootView style={styles.container}>
-            <ThemedApp />
-            <Toasts
-              overrideDarkMode
-              defaultStyle={{
-                text: {
-                  color: Colors.text,
-                },
-              }}
-            />
-          </GestureHandlerRootView>
-        </KeyboardProvider>
-      </SafeAreaProvider>
-    </I18nextProvider>
+    <TranslatorProvider>
+      <I18nextProvider i18n={i18n}>
+        <SafeAreaProvider>
+          <KeyboardProvider>
+            <GestureHandlerRootView style={styles.container}>
+              <ThemedApp />
+              <Toasts
+                overrideDarkMode
+                defaultStyle={{
+                  text: {
+                    color: Colors.text,
+                  },
+                }}
+              />
+            </GestureHandlerRootView>
+          </KeyboardProvider>
+        </SafeAreaProvider>
+      </I18nextProvider>
+    </TranslatorProvider>
   );
 }
 
