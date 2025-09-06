@@ -34,7 +34,7 @@
       "favicon": "./assets/favicon.png"
     },
     "plugins": [
-      "./plugins/with-modular-headers",
+      "./plugins/withPodfile",
       "./plugins/with-copy-firebase-files",
       "@react-native-firebase/app",
       "@react-native-firebase/auth",
