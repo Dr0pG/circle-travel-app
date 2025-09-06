@@ -24,4 +24,6 @@ export const Colors = {
   textInputPlaceholder: "#a9a9a9",
 
   yellow: "#e6c843",
+
+  blackTransparent: "rgba(0, 0, 0, 0.5)",
 };
