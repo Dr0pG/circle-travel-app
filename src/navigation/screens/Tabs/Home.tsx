@@ -23,6 +23,7 @@ import { Colors } from "@/utils/Colors";
 import { getGreeting } from "@/utils/Helper";
 import { Metrics } from "@/utils/Metrics";
 
+import KnowYourWorld from "@/components/Home/KnowYourWorld/KnowYourWorld";
 import i18n from "@/i18n";
 
 const onNavigateToInbox = () => navigate(ScreenName.Inbox);
@@ -82,10 +83,9 @@ const Home = () => {
       >
         {renderHeaderContent()}
         <ExclusivePackages />
-        <View style={styles.travelCategoryContainer}>
-          <TravelCategory />
-        </View>
+        <TravelCategory />
         <RecommendPackages />
+        <KnowYourWorld />
       </KeyboardAware>
     </MainView>
   );
@@ -112,10 +112,6 @@ const styles = StyleSheet.create({
   },
   searchInput: {
     marginTop: Metrics.padding.small,
-  },
-  travelCategoryContainer: {
-    paddingTop: Metrics.padding.medium,
-    paddingBottom: Metrics.padding.large,
   },
 });
 

@@ -27,6 +27,7 @@ export const Metrics = {
   padding: {
     small: 8, // Small padding
     medium: 16, // Medium padding
+    regular: 20, // Regular padding
     large: 24, // Large padding
     xLarge: 32, // Extra large padding
   },

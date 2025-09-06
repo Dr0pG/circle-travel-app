@@ -36,7 +36,8 @@ const TravelCategory = () => {
     getCategories();
   }, []);
 
-  if (isLoading || !categories?.length) return;
+  if (isLoading) return;
+  if (!categories?.length) return;
 
   const renderItem = ({ item }: { item: string }) => {
     return (
@@ -54,8 +55,8 @@ const TravelCategory = () => {
   };
 
   return (
-    <AnimatedView duration={250} delay={200}>
-      <View style={styles.container}>
+    <AnimatedView style={styles.container} duration={250} delay={200}>
+      <View style={styles.contentContainer}>
         <MainText fontSize={Metrics.fontSize.large} fontWeight={"600"}>
           {i18n.t("home.explore_category")}
         </MainText>
@@ -66,7 +67,7 @@ const TravelCategory = () => {
         showsHorizontalScrollIndicator={false}
         keyExtractor={(item) => item}
         contentContainerStyle={[
-          styles.container,
+          styles.contentContainer,
           {
             paddingTop: Metrics.padding.medium,
           },
@@ -82,6 +83,9 @@ const TravelCategory = () => {
 
 const styles = StyleSheet.create({
   container: {
+    paddingBottom: Metrics.padding.regular,
+  },
+  contentContainer: {
     paddingHorizontal: Metrics.padding.medium,
   },
   cardContainer: {

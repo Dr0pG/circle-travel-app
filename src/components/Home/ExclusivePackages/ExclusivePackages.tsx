@@ -66,11 +66,12 @@ const ExclusivePackages = () => {
     }
   };
 
-  if (isLoading || !currentExclusivePackages) return;
+  if (isLoading) return;
+  if (!currentExclusivePackages) return;
 
   return (
-    <AnimatedView duration={250} delay={100}>
-      <View style={styles.container}>
+    <AnimatedView style={styles.container} duration={250} delay={100}>
+      <View style={styles.contentContainer}>
         <MainText fontSize={Metrics.fontSize.large} fontWeight={"600"}>
           {i18n.t("home.exclusive_package")}
         </MainText>
@@ -96,6 +97,9 @@ const ExclusivePackages = () => {
 
 const styles = StyleSheet.create({
   container: {
+    paddingBottom: Metrics.padding.regular,
+  },
+  contentContainer: {
     paddingHorizontal: Metrics.padding.medium,
   },
 });

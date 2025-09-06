@@ -1,5 +1,5 @@
-import React, { memo, useEffect } from "react";
-import { StyleSheet, View } from "react-native";
+import React, { memo, useEffect, useRef } from "react";
+import { FlatList, StyleSheet, View } from "react-native";
 import Animated, {
   useAnimatedStyle,
   useSharedValue,
@@ -12,7 +12,6 @@ import Ionicons from "@expo/vector-icons/Ionicons";
 
 import { RecommendedPackage } from "@/api/Recommended";
 
-import AnimatedFlatListWrapper from "@/components/AnimatedFlatListWrapper";
 import MainText from "@/components/MainText";
 import Stars from "@/components/Stars";
 
@@ -27,7 +26,12 @@ const Recommendations = ({ data }: PropTypes) => {
   const fade = useSharedValue(1);
   const translateX = useSharedValue(0);
 
+  const flatListRef = useRef<FlatList>(null);
+
   useEffect(() => {
+    // Always scroll to the first item when data changes
+    flatListRef?.current?.scrollToOffset({ offset: 0, animated: false });
+
     // Slide out to the left and fade out
     fade.value = withTiming(0, { duration: 150 });
     translateX.value = withTiming(-30, { duration: 150 }, (finished) => {
@@ -79,7 +83,8 @@ const Recommendations = ({ data }: PropTypes) => {
 
   return (
     <Animated.View style={[animatedStyle, { flex: 1 }]}>
-      <AnimatedFlatListWrapper
+      <Animated.FlatList
+        ref={flatListRef}
         data={data}
         horizontal
         showsHorizontalScrollIndicator={false}

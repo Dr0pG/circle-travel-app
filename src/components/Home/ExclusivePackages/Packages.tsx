@@ -27,7 +27,7 @@ const Packages = forwardRef<FlatList<ExclusivePackage>, PropTypes>(
     { data, locations, locationListRef, selectedLocation, setSelectedLocation },
     ref
   ) => {
-    const viewConfigRef = useRef({ viewAreaCoveragePercentThreshold: 50 });
+    const viewConfigRef = useRef({ viewAreaCoveragePercentThreshold: 40 });
 
     const onViewableItemsChanged = useRef(({ viewableItems }: any) => {
       if (viewableItems.length > 0) {
@@ -48,6 +48,36 @@ const Packages = forwardRef<FlatList<ExclusivePackage>, PropTypes>(
       }
     }).current;
 
+    const renderItem = ({ item }: { item: ExclusivePackage }) => {
+      return (
+        <View style={styles.card}>
+          <Image source={{ uri: item.image }} style={styles.cardImage} />
+          <View style={styles.infoContainer}>
+            <View style={styles.nameContent}>
+              <MainText numberOfLines={1} fontWeight={"bold"}>
+                {item.name}
+              </MainText>
+              <MainText
+                fontSize={Metrics.fontSize.medium}
+                color={Colors.secondaryDark}
+              >
+                {item.location}
+              </MainText>
+            </View>
+            <View style={styles.ratingContainer}>
+              <AntDesign
+                name="star"
+                size={Metrics.ratingIconSize}
+                color={Colors.yellow}
+                style={styles.ratingIcon}
+              />
+              <MainText color={Colors.yellow}>{item.rating}</MainText>
+            </View>
+          </View>
+        </View>
+      );
+    };
+
     return (
       <FlatList
         ref={ref}
@@ -58,33 +88,7 @@ const Packages = forwardRef<FlatList<ExclusivePackage>, PropTypes>(
         contentContainerStyle={{ paddingHorizontal: Metrics.padding.medium }}
         onViewableItemsChanged={onViewableItemsChanged}
         viewabilityConfig={viewConfigRef.current}
-        renderItem={({ item }) => (
-          <View style={styles.card}>
-            <Image source={{ uri: item.image }} style={styles.cardImage} />
-            <View style={styles.infoContainer}>
-              <View style={styles.nameContent}>
-                <MainText numberOfLines={1} fontWeight={"bold"}>
-                  {item.name}
-                </MainText>
-                <MainText
-                  fontSize={Metrics.fontSize.medium}
-                  color={Colors.secondary}
-                >
-                  {item.location}
-                </MainText>
-              </View>
-              <View style={styles.ratingContainer}>
-                <AntDesign
-                  name="star"
-                  size={Metrics.ratingIconSize}
-                  color={Colors.yellow}
-                  style={styles.ratingIcon}
-                />
-                <MainText color={Colors.yellow}>{item.rating}</MainText>
-              </View>
-            </View>
-          </View>
-        )}
+        renderItem={renderItem}
         getItemLayout={(_, index) => ({
           length: CARD_WIDTH + Metrics.padding.large,
           offset: (CARD_WIDTH + Metrics.padding.large) * index,

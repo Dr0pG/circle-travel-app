@@ -50,8 +50,7 @@ const Locations = forwardRef<FlatList<string>, PropTypes>(
 
 const styles = StyleSheet.create({
   container: {
-    paddingTop: Metrics.padding.medium,
-    paddingBottom: Metrics.padding.large,
+    paddingVertical: Metrics.padding.medium,
   },
   tab: {
     paddingVertical: Metrics.padding.small / 2,

@@ -113,6 +113,10 @@
         "solo_trips": "Solo Trips",
         "family_trips": "Family Trips"
     },
+    "know_your_world": {
+        "title": "Know your world",
+        "description": "Grow your world knowledge",
+    },
     "user_logout_successfully": "User logout successfully!",
     "something_went_wrong": "Something went wrong. Try again later!",
     "skip": "Skip",

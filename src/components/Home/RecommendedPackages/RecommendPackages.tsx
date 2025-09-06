@@ -36,7 +36,8 @@ const RecommendPackages = () => {
     getRecommendationPackages();
   }, []);
 
-  if (isLoading || !currentRecommendedPackages) return;
+  if (isLoading) return;
+  if (!currentRecommendedPackages) return;
 
   const data =
     activeTab === 0
@@ -44,8 +45,8 @@ const RecommendPackages = () => {
       : currentRecommendedPackages?.family;
 
   return (
-    <AnimatedView duration={250} delay={300}>
-      <View style={styles.container}>
+    <AnimatedView style={styles.container} duration={250} delay={300}>
+      <View style={styles.contentContainer}>
         <MainText fontSize={Metrics.fontSize.large} fontWeight={"600"}>
           {i18n.t("home.recommended_packages")}
         </MainText>
@@ -60,6 +61,9 @@ const RecommendPackages = () => {
 
 const styles = StyleSheet.create({
   container: {
+    paddingBottom: Metrics.padding.regular,
+  },
+  contentContainer: {
     paddingHorizontal: Metrics.padding.medium,
   },
   tabsContainer: {
