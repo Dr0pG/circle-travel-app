@@ -10,8 +10,8 @@
     "scheme": "circletravelapp",
     "ios": {
       "googleServicesFile": "./ios/GoogleService-Info.plist",
-      "supportsTablet": false,
       "bundleIdentifier": "com.circletravel.app",
+      "supportsTablet": false,
       "entitlements": {
         "aps-environment": "production"
       },
@@ -24,11 +24,11 @@
     },
     "android": {
       "googleServicesFile": "./android/app/google-services.json",
+      "package": "com.circletravel.app",
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
         "backgroundColor": "#ffffff"
       },
-      "package": "com.circletravel.app"
     },
     "web": {
       "favicon": "./assets/favicon.png"
