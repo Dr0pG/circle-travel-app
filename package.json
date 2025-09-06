@@ -10,8 +10,7 @@
     "build-ios-production": "npm install && eas build --profile build-ios-production --platform ios",
     "build-android-production": "npm install && eas build --profile build-android-production --platform android",
     "eas-build-pre-install": "npm install",
-    "eas-build-prebuild": "npm run lint || true",
-    "postprebuild": "cp -f ./google-services.json ./android/app/google-services.json && cp -f ./GoogleService-Info.plist ./ios/GoogleService-Info.plist"
+    "eas-build-prebuild": "npm run lint || true"
   },
   "dependencies": {
     "@backpackapp-io/react-native-toast": "^0.14.0",

@@ -9,7 +9,7 @@
     "newArchEnabled": true,
     "scheme": "circletravelapp",
     "ios": {
-      "googleServicesFile": "./ios/GoogleService-Info.plist",
+      "googleServicesFile": "./GoogleService-Info.plist",
       "bundleIdentifier": "com.circletravel.app",
       "supportsTablet": false,
       "entitlements": {
@@ -23,7 +23,7 @@
       }
     },
     "android": {
-      "googleServicesFile": "./android/app/google-services.json",
+      "googleServicesFile": "./google-services.json",
       "package": "com.circletravel.app",
       "adaptiveIcon": {
         "foregroundImage": "./assets/adaptive-icon.png",
@@ -34,6 +34,10 @@
       "favicon": "./assets/favicon.png"
     },
     "plugins": [
+      "./plugins/with-modular-headers",
+      "./plugins/with-copy-firebase-files",
+      "@react-native-firebase/app",
+      "@react-native-firebase/auth",
       "expo-asset",
       [
         "expo-splash-screen",
@@ -43,8 +47,6 @@
         }
       ],
       "react-native-edge-to-edge",
-      "@react-native-firebase/app",
-      "@react-native-firebase/auth",
       "expo-font"
     ],
     "extra": {

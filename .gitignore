@@ -18,10 +18,10 @@ expo-env.d.ts
 *.mobileprovision
 
 # Android
-android/
+android
 
 # iOS
-ios/
+ios
 
 # Metro
 .metro-health-check*
