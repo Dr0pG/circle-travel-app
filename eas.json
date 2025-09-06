@@ -13,9 +13,26 @@
     },
     "production": {
       "android": {
-       "buildType": "apk"
+        "buildType": "apk"
       },
       "autoIncrement": true
+    },
+    "build-ios-production": {
+      "ios": {
+        "autoIncrement": true
+      },
+      "env": {
+        "NODE_ENV": "production"
+      }
+    },
+    "build-android-production": {
+      "android": {
+        "buildType": "apk",
+        "autoIncrement": true
+      },
+      "env": {
+        "NODE_ENV": "production"
+      }
     }
   },
   "submit": {

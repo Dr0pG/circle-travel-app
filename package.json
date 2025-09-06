@@ -6,7 +6,9 @@
     "start": "expo start --dev-client",
     "web": "expo start --web",
     "android": "expo run:android",
-    "ios": "expo run:ios"
+    "ios": "expo run:ios",
+    "build-ios-production": "npm install && eas build --profile build-ios-production --platform ios",
+    "build-android-production": "npm install && eas build --profile build-android-production --platform android"
   },
   "dependencies": {
     "@backpackapp-io/react-native-toast": "^0.14.0",
