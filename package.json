@@ -8,7 +8,9 @@
     "android": "expo run:android",
     "ios": "expo run:ios",
     "build-ios-production": "npm install && eas build --profile build-ios-production --platform ios",
-    "build-android-production": "npm install && eas build --profile build-android-production --platform android"
+    "build-android-production": "npm install && eas build --profile build-android-production --platform android",
+    "eas-build-pre-install": "npm install",
+    "eas-build-prebuild": "npm run lint || true"
   },
   "dependencies": {
     "@backpackapp-io/react-native-toast": "^0.14.0",
