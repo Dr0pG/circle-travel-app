@@ -18,6 +18,7 @@ import {
 
 import AntDesign from "@expo/vector-icons/AntDesign";
 import Entypo from "@expo/vector-icons/Entypo";
+import FontAwesome from "@expo/vector-icons/FontAwesome";
 
 import AnimatedView from "@/components/AnimatedView";
 
@@ -75,8 +76,8 @@ const Input = forwardRef<RNTextInput, PropTypes>(
       switch (icon) {
         case "search": {
           return (
-            <AntDesign
-              name="search1"
+            <FontAwesome
+              name="search"
               size={Metrics.iconInput}
               color={Colors.text}
               style={styles.icon}
