@@ -1,3 +1,4 @@
+import "react-native-reanimated";
 import "./gesture-handler";
 
 import "@expo/metro-runtime"; // Necessary for Fast Refresh on Web
