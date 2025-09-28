@@ -35,10 +35,9 @@
       "favicon": "./assets/favicon.png"
     },
     "plugins": [
-      "./plugins/withPodfile",
+      "./plugins/withSwiftExplicitModules",
       "@react-native-firebase/app",
       "@react-native-firebase/auth",
-      "expo-asset",
       [
         "expo-splash-screen",
         {
@@ -46,8 +45,18 @@
           "image": "./assets/splash-icon.png"
         }
       ],
+      "expo-asset",
+      "expo-font",
       "react-native-edge-to-edge",
-      "expo-font"
+      [
+        "expo-build-properties",
+        {
+          "ios": {
+            "useFrameworks": "static",
+            "buildReactNativeFromSource": true
+          }
+        }
+      ]
     ],
     "extra": {
       "eas": {
